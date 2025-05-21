@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Классная страничка Макара Солиева</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4F46E5',secondary:'#10B981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Nunito', sans-serif;
+}
+.hero-section {
+background-image: url('https://readdy.ai/api/search-image?query=Colorful%20classroom%20with%20educational%20elements%2C%20alphabet%20charts%2C%20numbers%2C%20and%20creative%20artwork%20on%20walls.%20Bright%2C%20cheerful%20environment%20with%20soft%20pastel%20colors.%20Perfect%20for%20elementary%20school%20teacher%20website.%20Cartoon%20style%20but%20realistic%2C%20not%20too%20childish.&width=1920&height=800&seq=1&orientation=landscape');
+background-size: cover;
+background-position: center;
+}
+.event-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.custom-checkbox {
+position: relative;
+cursor: pointer;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 24px;
+width: 24px;
+background-color: #fff;
+border: 2px solid #e5e7eb;
+border-radius: 4px;
+}
+.custom-checkbox:hover input ~ .checkmark {
+border-color: #4F46E5;
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #4F46E5;
+border-color: #4F46E5;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 9px;
+top: 5px;
+width: 5px;
+height: 10px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.custom-switch {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+}
+.custom-switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #ccc;
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #4F46E5;
+}
+input:focus + .slider {
+box-shadow: 0 0 1px #4F46E5;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.gallery-item {
+overflow: hidden;
+position: relative;
+}
+.gallery-item img {
+transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+transform: scale(1.05);
+}
+.gallery-item .overlay {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+color: white;
+padding: 20px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.gallery-item:hover .overlay {
+opacity: 1;
+}
+.tab-button {
+position: relative;
+}
+.tab-button.active:after {
+content: '';
+position: absolute;
+bottom: -2px;
+left: 0;
+right: 0;
+height: 2px;
+background-color: #4F46E5;
+}
+</style>
+</head>
+<body class="bg-gray-50">
+<!-- Навигационная панель -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+<div class="container mx-auto px-4 py-3 flex items-center justify-between">
+<a href="#" class="text-2xl font-['Pacifico'] text-primary">Классная страничка</a>
+<nav class="hidden md:flex space-x-6">
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Главная</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Расписание</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Учебные материалы</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Творчество</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Для родителей</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium">Блог</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="hidden md:block bg-primary text-white px-4 py-2 !rounded-button hover:bg-indigo-600 transition whitespace-nowrap">Задать вопрос</button>
+<div class="w-10 h-10 flex items-center justify-center bg-gray-100 rounded-full cursor-pointer hover:bg-gray-200">
+<i class="ri-notification-3-line text-gray-600"></i>
+</div>
+<div class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer" id="mobile-menu-button">
+<i class="ri-menu-line text-xl"></i>
+</div>
+</div>
+</div>
+<!-- Мобильное меню -->
+<div class="md:hidden hidden bg-white w-full absolute top-full left-0 shadow-md z-50" id="mobile-menu">
+<div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Главная</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Расписание</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Учебные материалы</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Творчество</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Для родителей</a>
+<a href="#" class="text-gray-800 hover:text-primary font-medium py-2 border-b border-gray-100">Блог</a>
+<button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-indigo-600 transition whitespace-nowrap">Задать вопрос</button>
+</div>
+</div>
+</header>
+<!-- Секция приветствия -->
+<section class="hero-section relative">
+<div class="absolute inset-0 bg-gradient-to-r from-indigo-900/70 to-transparent"></div>
+<div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
+<div class="max-w-3xl text-white">
+<h1 class="text-4xl md:text-5xl font-bold mb-4">Макар Солиев</h1>
+<p class="text-xl md:text-2xl mb-6">Учитель начальных классов</p>
+<div class="bg-white/20 backdrop-blur-sm p-4 !rounded-lg mb-8 inline-block">
+<p class="text-lg italic">"Каждый ребенок — это уникальный мир, полный возможностей"</p>
+</div>
+<p class="text-lg mb-8">Добро пожаловать на мою страничку! Я молодой учитель начальных классов с современным подходом к обучению. Моя цель — создать увлекательную и поддерживающую среду обучения, где каждый ребенок может раскрыть свой потенциал.</p>
+<div class="flex flex-wrap gap-6 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/20 !rounded-full">
+<i class="ri-heart-line text-white ri-lg"></i>
+</div>
+<div>
+<p class="font-semibold">Молодой учитель</p>
+<p class="text-sm text-white/80">с современным подходом</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-indigo-600 transition whitespace-nowrap">Связаться со мной</button>
+</div>
+</div>
+</section>
+<!-- Блок анонсов и событий -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-10">
+<h2 class="text-3xl font-bold text-gray-800">Ближайшие события</h2>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center">
+Все события
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white shadow-md !rounded-lg overflow-hidden border border-gray-100 transition duration-300 event-card">
+<div class="h-48 bg-indigo-100 flex items-center justify-center">
+<div class="text-center">
+<p class="text-lg font-medium text-gray-600">Май</p>
+<p class="text-4xl font-bold text-primary">25</p>
+<p class="text-sm text-gray-500">Среда</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-medium !rounded-full">Праздник</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Последний звонок</h3>
+<p class="text-gray-600 mb-4">Торжественная линейка, посвященная окончанию учебного года. Начало в 10:00 в актовом зале школы.</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">10:00 - 11:30</span>
+<button class="text-primary hover:text-indigo-600 font-medium whitespace-nowrap">Подробнее</button>
+</div>
+</div>
+</div>
+<div class="bg-white shadow-md !rounded-lg overflow-hidden border border-gray-100 transition duration-300 event-card">
+<div class="h-48 bg-green-100 flex items-center justify-center">
+<div class="text-center">
+<p class="text-lg font-medium text-gray-600">Май</p>
+<p class="text-4xl font-bold text-green-600">27</p>
+<p class="text-sm text-gray-500">Пятница</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-2 py-1 bg-green-100 text-green-800 text-xs font-medium !rounded-full">Собрание</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Родительское собрание</h3>
+<p class="text-gray-600 mb-4">Обсуждение итогов учебного года и планирование летних мероприятий. Явка родителей обязательна.</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">18:00 - 19:30</span>
+<button class="text-primary hover:text-indigo-600 font-medium whitespace-nowrap">Подробнее</button>
+</div>
+</div>
+</div>
+<div class="bg-white shadow-md !rounded-lg overflow-hidden border border-gray-100 transition duration-300 event-card">
+<div class="h-48 bg-amber-100 flex items-center justify-center">
+<div class="text-center">
+<p class="text-lg font-medium text-gray-600">Июнь</p>
+<p class="text-4xl font-bold text-amber-600">1</p>
+<p class="text-sm text-gray-500">Вторник</p>
+</div>
+</div>
+<div class="p-6">
+<div class="flex items-center mb-3">
+<span class="px-2 py-1 bg-amber-100 text-amber-800 text-xs font-medium !rounded-full">Экскурсия</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Поездка в музей</h3>
+<p class="text-gray-600 mb-4">Экскурсия в исторический музей. Сбор у школы в 9:30. Не забудьте взять с собой воду и перекус.</p>
+<div class="flex items-center justify-between">
+<span class="text-sm text-gray-500">10:00 - 14:00</span>
+<button class="text-primary hover:text-indigo-600 font-medium whitespace-nowrap">Подробнее</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Расписание уроков -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<div class="flex justify-between items-center mb-10">
+<h2 class="text-3xl font-bold text-gray-800">Расписание уроков</h2>
+<button class="flex items-center space-x-2 bg-white border border-gray-200 px-4 py-2 !rounded-button hover:bg-gray-50 transition whitespace-nowrap">
+<i class="ri-download-line"></i>
+<span>Скачать PDF</span>
+</button>
+</div>
+<div class="bg-white shadow-md !rounded-lg overflow-hidden">
+<div class="flex border-b border-gray-200">
+<button class="px-6 py-4 font-medium text-primary tab-button active">Понедельник</button>
+<button class="px-6 py-4 font-medium text-gray-600 hover:text-primary tab-button">Вторник</button>
+<button class="px-6 py-4 font-medium text-gray-600 hover:text-primary tab-button">Среда</button>
+<button class="px-6 py-4 font-medium text-gray-600 hover:text-primary tab-button">Четверг</button>
+<button class="px-6 py-4 font-medium text-gray-600 hover:text-primary tab-button">Пятница</button>
+</div>
+<div class="p-6">
+<div class="overflow-x-auto">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">№</th>
+<th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Время</th>
+<th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Предмет</th>
+<th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Кабинет</th>
+<th class="px-4 py-3 text-left text-sm font-semibold text-gray-600">Домашнее задание</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-100">
+<td class="px-4 py-4 text-sm text-gray-800">1</td>
+<td class="px-4 py-4 text-sm text-gray-800">8:30 - 9:15</td>
+<td class="px-4 py-4 text-sm font-medium text-gray-800">Русский язык</td>
+<td class="px-4 py-4 text-sm text-gray-800">205</td>
+<td class="px-4 py-4 text-sm text-gray-800">Упр. 123, стр. 45</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="px-4 py-4 text-sm text-gray-800">2</td>
+<td class="px-4 py-4 text-sm text-gray-800">9:25 - 10:10</td>
+<td class="px-4 py-4 text-sm font-medium text-gray-800">Математика</td>
+<td class="px-4 py-4 text-sm text-gray-800">205</td>
+<td class="px-4 py-4 text-sm text-gray-800">№ 234, 235, стр. 67</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="px-4 py-4 text-sm text-gray-800">3</td>
+<td class="px-4 py-4 text-sm text-gray-800">10:30 - 11:15</td>
+<td class="px-4 py-4 text-sm font-medium text-gray-800">Окружающий мир</td>
+<td class="px-4 py-4 text-sm text-gray-800">205</td>
+<td class="px-4 py-4 text-sm text-gray-800">Стр. 78-80, ответить на вопросы</td>
+</tr>
+<tr class="border-b border-gray-100">
+<td class="px-4 py-4 text-sm text-gray-800">4</td>
+<td class="px-4 py-4 text-sm text-gray-800">11:25 - 12:10</td>
+<td class="px-4 py-4 text-sm font-medium text-gray-800">Литературное чтение</td>
+<td class="px-4 py-4 text-sm text-gray-800">205</td>
+<td class="px-4 py-4 text-sm text-gray-800">Стр. 123-125, выразительное чтение</td>
+</tr>
+<tr>
+<td class="px-4 py-4 text-sm text-gray-800">5</td>
+<td class="px-4 py-4 text-sm text-gray-800">12:20 - 13:05</td>
+<td class="px-4 py-4 text-sm font-medium text-gray-800">Изобразительное искусство</td>
+<td class="px-4 py-4 text-sm text-gray-800">205</td>
+<td class="px-4 py-4 text-sm text-gray-800">Принести акварельные краски и альбом</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Учебные материалы -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-800 mb-10">Учебные материалы</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-gray-50 !rounded-lg p-6">
+<div class="w-14 h-14 flex items-center justify-center bg-blue-100 !rounded-lg mb-4">
+<i class="ri-book-open-line text-blue-600 ri-xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Домашние задания</h3>
+<p class="text-gray-600 mb-6">Актуальные домашние задания по всем предметам на текущую неделю.</p>
+<div class="space-y-4 mb-6">
+<div class="bg-white p-4 !rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-medium">Русский язык</h4>
+<span class="text-sm text-gray-500">21.05.2025</span>
+</div>
+<p class="text-sm text-gray-600">Упражнения 145-147, повторить правила правописания приставок.</p>
+</div>
+<div class="bg-white p-4 !rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-medium">Математика</h4>
+<span class="text-sm text-gray-500">21.05.2025</span>
+</div>
+<p class="text-sm text-gray-600">Задачи №245-248, повторить таблицу умножения.</p>
+</div>
+<div class="bg-white p-4 !rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-medium">Окружающий мир</h4>
+<span class="text-sm text-gray-500">21.05.2025</span>
+</div>
+<p class="text-sm text-gray-600">Стр. 78-80, подготовить доклад о животных средней полосы России.</p>
+</div>
+</div>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center">
+Все домашние задания
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+<div class="bg-gray-50 !rounded-lg p-6">
+<div class="w-14 h-14 flex items-center justify-center bg-green-100 !rounded-lg mb-4">
+<i class="ri-links-line text-green-600 ri-xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Полезные ссылки</h3>
+<p class="text-gray-600 mb-6">Образовательные ресурсы для дополнительных занятий и тренировок.</p>
+<div class="space-y-4 mb-6">
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-red-100 !rounded-lg mr-4">
+<i class="ri-youtube-line text-red-600"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Видеоуроки по математике</h4>
+<p class="text-sm text-gray-600">Обучающие видео для 3 класса</p>
+</div>
+</div>
+</a>
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 !rounded-lg mr-4">
+<i class="ri-game-line text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Интерактивные упражнения</h4>
+<p class="text-sm text-gray-600">Тренажеры по русскому языку</p>
+</div>
+</div>
+</a>
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-purple-100 !rounded-lg mr-4">
+<i class="ri-book-read-line text-purple-600"></i>
+</div>
+<div>
+<h4 class="font-medium mb-1">Электронная библиотека</h4>
+<p class="text-sm text-gray-600">Книги для внеклассного чтения</p>
+</div>
+</div>
+</a>
+</div>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center">
+Все полезные ссылки
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+<div class="bg-gray-50 !rounded-lg p-6">
+<div class="w-14 h-14 flex items-center justify-center bg-amber-100 !rounded-lg mb-4">
+<i class="ri-file-list-3-line text-amber-600 ri-xl"></i>
+</div>
+<h3 class="text-xl font-bold mb-4">Методические материалы</h3>
+<p class="text-gray-600 mb-6">Правила, памятки и шаблоны для эффективного обучения.</p>
+<div class="space-y-4 mb-6">
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-red-100 !rounded-lg mr-4">
+<i class="ri-file-pdf-line text-red-600"></i>
+</div>
+<div>
+<h4 class="font-medium">Памятка по русскому языку</h4>
+<p class="text-sm text-gray-500">PDF, 1.2 МБ</p>
+</div>
+</div>
+<i class="ri-download-line text-gray-400"></i>
+</div>
+</a>
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-blue-100 !rounded-lg mr-4">
+<i class="ri-file-word-line text-blue-600"></i>
+</div>
+<div>
+<h4 class="font-medium">Таблица умножения</h4>
+<p class="text-sm text-gray-500">DOCX, 0.8 МБ</p>
+</div>
+</div>
+<i class="ri-download-line text-gray-400"></i>
+</div>
+</a>
+<a href="#" class="block bg-white p-4 !rounded-lg shadow-sm hover:shadow-md transition">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<div class="w-10 h-10 flex items-center justify-center bg-green-100 !rounded-lg mr-4">
+<i class="ri-file-excel-line text-green-600"></i>
+</div>
+<div>
+<h4 class="font-medium">Шаблоны для проектов</h4>
+<p class="text-sm text-gray-500">XLSX, 1.5 МБ</p>
+</div>
+</div>
+<i class="ri-download-line text-gray-400"></i>
+</div>
+</a>
+</div>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center">
+Все методические материалы
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Творчество учеников -->
+<section class="py-16 bg-gray-50">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-800 mb-10">Творчество учеников</h2>
+<div class="flex space-x-4 mb-8 overflow-x-auto pb-2">
+<button class="px-4 py-2 bg-primary text-white !rounded-full whitespace-nowrap">Рисунки</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Colorful%20childrens%20drawing%20of%20a%20spring%20landscape%20with%20flowers%2C%20trees%2C%20and%20a%20bright%20sun.%20Created%20by%20an%20elementary%20school%20student.%20Vibrant%20colors%2C%20simple%20shapes%2C%20but%20very%20expressive%20and%20creative.%20Authentic%20childs%20artwork%20style.&width=600&height=400&seq=1&orientation=landscape" alt="Рисунок весны" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Весенний пейзаж</h3>
+<p class="text-sm">Анна Петрова, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childrens%20drawing%20of%20a%20colorful%20fantasy%20castle%20with%20rainbow%20and%20unicorns.%20Elementary%20school%20student%20artwork%20with%20bright%20colors%20and%20imaginative%20details.%20Simple%20but%20creative%20style.&width=600&height=400&seq=2&orientation=landscape" alt="Сказочный замок" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Сказочный замок</h3>
+<p class="text-sm">Дмитрий Иванов, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childrens%20artwork%20showing%20a%20family%20portrait%20drawn%20by%20an%20elementary%20school%20student.%20Simple%20stick%20figures%20or%20basic%20shapes%20representing%20family%20members.%20Colorful%2C%20expressive%2C%20with%20typical%20child-like%20proportions.%20Authentic%20childs%20drawing%20style.&width=600&height=400&seq=3&orientation=landscape" alt="Моя семья" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Моя семья</h3>
+<p class="text-sm">Елена Смирнова, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childs%20drawing%20of%20their%20favorite%20pet%2C%20a%20cat%20or%20dog.%20Elementary%20school%20student%20artwork%20with%20bright%20colors%20and%20simple%20shapes.%20Heartwarming%20and%20expressive%20style.&width=600&height=400&seq=4&orientation=landscape" alt="Мой питомец" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Мой питомец</h3>
+<p class="text-sm">Максим Козлов, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childs%20drawing%20of%20space%20and%20planets%2C%20elementary%20school%20student%20artwork.%20Colorful%20planets%2C%20stars%2C%20and%20spaceships.%20Creative%20and%20imaginative%20interpretation%20of%20the%20solar%20system.&width=600&height=400&seq=5&orientation=landscape" alt="Космос" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Космос</h3>
+<p class="text-sm">Артём Соколов, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childs%20drawing%20of%20autumn%20landscape%20with%20falling%20leaves%20and%20trees.%20Elementary%20school%20student%20artwork%20with%20warm%20colors.%20Simple%20but%20expressive%20style%20showing%20seasonal%20change.&width=600&height=400&seq=6&orientation=landscape" alt="Осенний лес" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Осенний лес</h3>
+<p class="text-sm">София Морозова, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childs%20drawing%20of%20underwater%20scene%20with%20fish%20and%20sea%20creatures.%20Elementary%20school%20student%20artwork%20with%20blue%20colors%20and%20marine%20life.%20Creative%20and%20playful%20interpretation%20of%20ocean.&width=600&height=400&seq=7&orientation=landscape" alt="Подводный мир" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Подводный мир</h3>
+<p class="text-sm">Кирилл Волков, 3-А класс</p>
+</div>
+</div>
+<div class="gallery-item !rounded-lg overflow-hidden shadow-md">
+<img src="https://readdy.ai/api/search-image?query=Childs%20drawing%20of%20a%20festive%20winter%20scene%20with%20snow%20and%20Christmas%20tree.%20Elementary%20school%20student%20artwork%20with%20holiday%20spirit.%20Colorful%20and%20cheerful%20style.&width=600&height=400&seq=8&orientation=landscape" alt="Зимний праздник" class="w-full h-64 object-cover object-top">
+<div class="overlay">
+<h3 class="font-bold">Зимний праздник</h3>
+<p class="text-sm">Алиса Кузнецова, 3-А класс</p>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center">
+<button class="bg-white border border-gray-200 text-gray-700 px-6 py-3 !rounded-button hover:bg-gray-50 transition whitespace-nowrap">Показать больше работ</button>
+</div>
+</div>
+</section>
+<!-- Для родителей -->
+<section class="py-16 bg-white">
+<div class="container mx-auto px-4">
+<h2 class="text-3xl font-bold text-gray-800 mb-10">Для родителей</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-gray-50 !rounded-lg p-6">
+<h3 class="text-xl font-bold mb-6 flex items-center">
+<i class="ri-psychology-line text-primary mr-2"></i>
+Советы психолога
+</h3>
+<div class="space-y-6">
+<div class="bg-white p-5 !rounded-lg shadow-sm">
+<h4 class="font-bold mb-3">Как помочь ребенку справиться с тревогой перед контрольной</h4>
+<p class="text-gray-600 mb-4">Многие дети испытывают стресс перед важными проверочными работами. Вот несколько рекомендаций, которые помогут снизить тревожность:</p>
+<ul class="list-disc pl-5 text-gray-600 space-y-2">
+<li>Обеспечьте спокойную обстановку накануне</li>
+<li>Помогите ребенку составить план подготовки</li>
+<li>Научите простым техникам дыхания для расслабления</li>
+<li>Обсудите с ребенком, что самое страшное, что может произойти</li>
+</ul>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium inline-block mt-4">Читать полностью</a>
+</div>
+<div class="bg-white p-5 !rounded-lg shadow-sm">
+<h4 class="font-bold mb-3">Режим дня младшего школьника: почему это важно</h4>
+<p class="text-gray-600 mb-4">Правильно организованный режим дня помогает ребенку быть более собранным, меньше уставать и лучше усваивать учебный материал. Рекомендации по составлению оптимального расписания дня для учеников начальной школы.</p>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium inline-block mt-2">Читать полностью</a>
+</div>
+</div>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center mt-6">
+Все советы психолога
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+<div class="bg-gray-50 !rounded-lg p-6">
+<h3 class="text-xl font-bold mb-6 flex items-center">
+<i class="ri-question-answer-line text-primary mr-2"></i>
+Частые вопросы
+</h3>
+<div class="space-y-4">
+<div class="bg-white !rounded-lg shadow-sm overflow-hidden">
+<button class="w-full px-5 py-4 text-left font-medium flex justify-between items-center">
+<span>Какая форма одежды требуется для занятий физкультурой?</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div class="px-5 py-4 border-t border-gray-100">
+<p class="text-gray-600">Для занятий физкультурой необходимы: белая футболка, черные или темно-синие спортивные шорты, спортивная обувь на нескользящей подошве. В холодное время года для занятий на улице понадобится спортивный костюм.</p>
+</div>
+</div>
+<div class="bg-white !rounded-lg shadow-sm overflow-hidden">
+<button class="w-full px-5 py-4 text-left font-medium flex justify-between items-center">
+<span>Как организовано питание в школе?</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div class="px-5 py-4 border-t border-gray-100">
+<p class="text-gray-600">Учащиеся начальных классов получают бесплатное горячее питание один раз в день. Завтрак подается с 9:15 до 9:25. Также в школе работает буфет, где можно приобрести дополнительные продукты. Меню составляется с учетом требований к детскому питанию.</p>
+</div>
+</div>
+<div class="bg-white !rounded-lg shadow-sm overflow-hidden">
+<button class="w-full px-5 py-4 text-left font-medium flex justify-between items-center">
+<span>Как помочь ребенку с домашним заданием?</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div class="px-5 py-4 border-t border-gray-100">
+<p class="text-gray-600">Важно создать комфортные условия для выполнения домашних заданий: тихое место, хорошее освещение, отсутствие отвлекающих факторов. Помогайте ребенку, если у него возникают трудности, но не выполняйте задания за него. Если ребенок систематически не справляется с заданиями, обязательно сообщите об этом учителю.</p>
+</div>
+</div>
+<div class="bg-white !rounded-lg shadow-sm overflow-hidden">
+<button class="w-full px-5 py-4 text-left font-medium flex justify-between items-center">
+<span>Что делать, если ребенок заболел?</span>
+<i class="ri-arrow-down-s-line"></i>
+</button>
+<div class="px-5 py-4 border-t border-gray-100">
+<p class="text-gray-600">В случае болезни ребенка необходимо сообщить об этом классному руководителю до 8:30 утра. После выздоровления ученик должен предоставить справку от врача. Домашние задания на период болезни можно узнать на этом сайте или связавшись с учителем.</p>
+</div>
+</div>
+</div>
+<a href="#" class="text-primary hover:text-indigo-600 font-medium flex items-center mt-6">
+Все частые вопросы
+<i class="ri-arrow-right-line ml-1"></i>
+</a>
+</div>
+</div>
+<div class="mt-12 bg-gray-50 !rounded-lg p-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div>
+<h3 class="text-2xl font-bold mb-4">Остались вопросы?</h3>
+<p class="text-gray-600 mb-6">Если у вас остались вопросы или вы хотите записаться на индивидуальную консультацию, заполните форму обратной связи. Я отвечу вам в течение 24 часов.</p>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label for="name" class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
+<input type="text" id="name" class="w-full px-4 py-2 !rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Иван Петров">
+</div>
+<div>
+<label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" id="email" class="w-full px-4 py-2 !rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="ivan@example.com">
+</div>
+</div>
+<div>
+<label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Тема</label>
+<input type="text" id="subject" class="w-full px-4 py-2 !rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Вопрос по домашнему заданию">
+</div>
+<div>
+<label for="message" class="block text-sm font-medium text-gray-700 mb-1">Сообщение</label>
+<textarea id="message" rows="4" class="w-full px-4 py-2 !rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Ваш вопрос или комментарий"></textarea>
+</div>
+<div class="flex items-center">
+<label class="custom-checkbox flex items-center">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="ml-8 text-sm text-gray-600">Я согласен на обработку персональных данных</span>
+</label>
+</div>
+<button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-indigo-600 transition whitespace-nowrap">Отправить сообщение</button>
+</form>
+</div>
+<div class="hidden md:block">
+<img src="https://readdy.ai/api/search-image?query=Elementary%20school%20teacher%20talking%20with%20a%20parent%20in%20a%20classroom%20setting.%20Professional%2C%20friendly%20interaction.%20The%20teacher%20is%20showing%20some%20student%20work%20or%20explaining%20something.%20Warm%2C%20supportive%20atmosphere.%20Natural%20lighting%2C%20classroom%20environment%20with%20educational%20materials%20visible.&width=600&height=800&seq=9&orientation=portrait" alt="Консультация с учителем" class="w-full h-auto !rounded-lg shadow-lg">
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Подписка на новости -->
+<section class="py-16 bg-indigo-50">
+<div class="container mx-auto px-4 text-center">
+<h2 class="text-3xl font-bold text-gray-800 mb-4">Будьте в курсе всех новостей</h2>
+<p class="text-gray-600 max-w-2xl mx-auto mb-8">Подпишитесь на нашу рассылку, чтобы получать актуальную информацию о событиях класса, домашних заданиях и важных объявлениях.</p>
+<div class="flex flex-col sm:flex-row max-w-lg mx-auto gap-4">
+<input type="email" class="flex-grow px-4 py-3 !rounded-lg border-none focus:outline-none focus:ring-2 focus:ring-primary/50" placeholder="Ваш email">
+<button class="bg-primary text-white px-6 py-3 !rounded-button hover:bg-indigo-600 transition whitespace-nowrap">Подписаться</button>
+</div>
+<div class="mt-6 flex justify-center space-x-6">
+<label class="custom-checkbox flex items-center">
+<input type="checkbox" checked class="hidden">
+<span class="checkmark"></span>
+<span class="ml-8 text-sm text-gray-600">Новости класса</span>
+</label>
+<label class="custom-checkbox flex items-center">
+<input type="checkbox" checked class="hidden">
+<span class="checkmark"></span>
+<span class="ml-8 text-sm text-gray-600">Домашние задания</span>
+</label>
+<label class="custom-checkbox flex items-center">
+<input type="checkbox" class="hidden">
+<span class="checkmark"></span>
+<span class="ml-8 text-sm text-gray-600">Методические материалы</span>
+</label>
+</div>
+</div>
+</section>
+<!-- Подвал сайта -->
+<footer class="bg-gray-800 text-white py-12">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-xl font-bold mb-4">Классная страничка</h3>
+<p class="text-gray-400 mb-4">Макар Солиев<br>Учитель начальных классов<br>МБОУ ПМО "Трифоновская СОШ"</p>
+<div class="flex space-x-4">
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 !rounded-full hover:bg-gray-600">
+<i class="ri-telegram-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 !rounded-full hover:bg-gray-600">
+<i class="ri-vk-line"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-700 !rounded-full hover:bg-gray-600">
+<i class="ri-youtube-line"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Навигация</h3>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-white">Главная</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Расписание</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Учебные материалы</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Творчество</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Для родителей</a></li>
+<li><a href="#" class="text-gray-400 hover:text-white">Блог</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Контакты</h3>
+<ul class="space-y-2">
+<li class="flex items-center text-gray-400">
+<i class="ri-map-pin-line mr-2"></i>
+<span>село Трифоново, ул. Ленина, 93</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-phone-line mr-2"></i>
+<span>+79935077132</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-mail-line mr-2"></i>
+<span>Soliev-2002@bk.ru</span>
+</li>
+<li class="flex items-center text-gray-400">
+<i class="ri-time-line mr-2"></i>
+<span>Пн-Пт: 8:00 - 16:00</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-bold mb-4">Подписка</h3>
+<p class="text-gray-400 mb-4">Подпишитесь на нашу рассылку, чтобы быть в курсе всех новостей</p>
+<div class="flex">
+<input type="email" class="flex-grow px-4 py-2 !rounded-l-lg border-none focus:outline-none focus:ring-2 focus:ring-primary/50 text-gray-800" placeholder="Ваш email">
+<button class="bg-primary text-white px-4 py-2 !rounded-r-lg hover:bg-indigo-600 transition whitespace-nowrap">
+<i class="ri-send-plane-line"></i>
+</button>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+<p class="text-gray-400 text-sm">© 2025 Классная страничка Макара Солиева. Все права защищены.</p>
+<div class="flex space-x-4 mt-4 md:mt-0">
+<a href="#" class="text-gray-400 hover:text-white text-sm">Политика конфиденциальности</a>
+<a href="#" class="text-gray-400 hover:text-white text-sm">Условия использования</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Мобильное меню
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+</body>
+</html>
